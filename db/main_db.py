@@ -2,40 +2,45 @@ import sqlite3
 from config import path_db
 from db import queries
 
+
 def init_db():
     conn = sqlite3.connect(path_db)
     cursor = conn.cursor()
-    cursor.execute(queries.tasks_table)
+    cursor.execute(queries.student_table)
     conn.commit()
     conn.close()
 
-def insert_task(task):
+
+def insert_student(name, age):
     conn = sqlite3.connect(path_db)
     cursor = conn.cursor()
-    cursor.execute(queries.insert_task, (task,))
+    cursor.execute(queries.insert_student, (name, age))
     conn.commit()
-    task_id = cursor.lastrowid
+    student_id = cursor.lastrowid
     conn.close()
-    return task_id
+    return student_id
 
-def select_tasks():
+
+def select_students():
     conn = sqlite3.connect(path_db)
     cursor = conn.cursor()
-    cursor.execute(queries.select_tasks)
-    tasks = cursor.fetchall()
+    cursor.execute(queries.select_students)
+    students = cursor.fetchall()
     conn.close()
-    return tasks
+    return students
 
-def update_task(task, task_id):
+
+def update_student(name, age, student_id):
     conn = sqlite3.connect(path_db)
     cursor = conn.cursor()
-    cursor.execute(queries.update_task, (task, task_id))
+    cursor.execute(queries.update_student, (name, age, student_id))
     conn.commit()
     conn.close()
 
-def delete_task(task_id):
+
+def delete_student(student_id):
     conn = sqlite3.connect(path_db)
     cursor = conn.cursor()
-    cursor.execute(queries.delete_task, (task_id,))
+    cursor.execute(queries.delete_student, (student_id,))
     conn.commit()
     conn.close()
