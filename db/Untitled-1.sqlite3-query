@@ -6,8 +6,10 @@ INSERT INTO student (name, age) VALUES ('Alice', 20);
 INSERT INTO student (name, age) VALUES ('Bob', 22);
 
 UPDATE student SET age = 21 WHERE name = 'Alice';
-UPDATE student SET name = 'Robert' WHERE age = 22;
+UPDATE student SET name = 'Robert' WHERE id = 2;
 
 DELETE FROM student WHERE name = 'Alice';
 
 INSERT INTO student (name, age) VALUES ('PEPA', 99);
+
+SELECT * FROM student;
